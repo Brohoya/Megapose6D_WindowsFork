@@ -200,7 +200,15 @@ class Panda3dSceneRenderer:
         scale = asset.scaling_factor_mesh_units_to_meters * asset.scaling_factor
         y, p, r = asset.ypr_offset_deg
 
-        node = self._app.loader.load_model(str(asset.mesh_path), noCache=True)
+        # Converting windows path to unix path
+        windows_path: str = str(asset.mesh_path)
+        if windows_path[1:3] == ":\\":
+            drive = windows_path[0].lower()
+            rest = windows_path[2:].replace('\\', '/')
+            unix_path = f"/{drive}{rest}"
+        else: unix_path = windows_path.replace('\\', '/')
+
+        node = self._app.loader.load_model(unix_path, noCache=True)
         node.setScale(scale)
         node.setPos(0, 0, 0)
         node.setHpr(y, p, r)
