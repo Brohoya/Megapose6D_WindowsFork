@@ -4,6 +4,7 @@ channels:
    - pytorch
    - anaconda
    - defaults
+   - menpo
 dependencies:
   - python=3.9
   - pip
@@ -26,6 +27,9 @@ dependencies:
   - selenium
   - geckodriver
   - firefox
+  - nb_conda_kernels
+  - jupyter_contrib_nbextensions
+#   - notebook
   - pip:
       - meshcat
       - selenium
@@ -56,7 +60,6 @@ dependencies:
       - seaborn
       - kornia 
       - pyarrow 
-      - dt_apriltags 
       - open3d
       - structlog
       - imageio
@@ -67,3 +70,4 @@ dependencies:
       - opencv-contrib-python 
       - roma 
       - torchgeometry
+      # - dt-apriltags
